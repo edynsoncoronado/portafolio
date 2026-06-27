@@ -1,0 +1,47 @@
+services:
+
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: frontend-dev
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/workspace
+  #     - /workspace/node_modules
+  #   environment:
+  #     - NEXT_PUBLIC_API_URL=http://localhost:8000
+  #   depends_on:
+  #     - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/workspace
+    tty: true
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/appdb
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17
+    container_name: postgres-dev
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: appdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
