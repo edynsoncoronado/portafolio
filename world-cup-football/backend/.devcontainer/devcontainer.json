@@ -2,7 +2,7 @@
   "name": "world-cup-football",
   "dockerComposeFile": "../../docker-compose.yml",
   "service": "backend",
-  "workspaceFolder": "/app",
+  "workspaceFolder": "/workspace",
 
   "customizations": {
     "vscode": {
