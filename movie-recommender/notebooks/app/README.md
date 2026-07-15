@@ -43,8 +43,8 @@ flowchart TB
 **Process**:
 - [Download datasets from IMDB (title.basics.tsv.gz, title.ratings.tsv.gz)](./doc/0-a-Download-opendata.md)
 - Filter to show only movies (excludes series, short films, etc.)
-- Enrich with data from the IMDB API (Plot, Director, Actors, Awards)
-- Manage API rate limiting: [asynchronous vs. multiprocess methods](./doc/md/1%20async-vs-multiprocessing.md), [omdb-script](./doc/md/1%20omdb-script.md)
+- [Enrich with data from the IMDB API (Plot, Director, Actors, Awards)](./doc/0-b-Download-privatedata.md)
+- Manage API rate limiting: asynchronous
 
 **Outputs**:
 - `data/movies.parquet`: Base data from IMDB
