@@ -1,0 +1,10 @@
+services:
+
+  notebooks:
+    build:
+      context: .
+      dockerfile: ./.devcontainer/Dockerfile
+    container_name: notebooks-examples
+    volumes:
+      - ../app:/app
+    tty: true
