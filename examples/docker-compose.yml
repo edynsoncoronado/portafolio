@@ -6,5 +6,5 @@ services:
       dockerfile: ./.devcontainer/Dockerfile
     container_name: notebooks-examples
     volumes:
-      - ../app:/app
+      - ./app:/app
     tty: true
