@@ -1,0 +1,247 @@
+@import 'tailwindcss';
+
+/* Tailwind v4 usa media query para `dark:` por defecto.
+   Esta variante lo cambia a control por clase en <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   Paleta base (valores fijos, iguales en ambos temas)
+--------------------------------------------------------------- */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0b1020;
+  --color-void: #050816;
+
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #2563eb;
+  --color-brand-600: #1d4ed8;
+  --color-brand-700: #1e40af;
+
+  --color-ai-50: #f5f3ff;
+  --color-ai-100: #ede9fe;
+  --color-ai-200: #ddd6fe;
+  --color-ai-300: #c4b5fd;
+  --color-ai-400: #a78bfa;
+  --color-ai-500: #7c3aed;
+  --color-ai-600: #6d28d9;
+  --color-ai-700: #5b21b6;
+
+  --color-cyan-accent-100: #cffafe;
+  --color-cyan-accent-300: #67e8f9;
+  --color-cyan-accent-400: #22d3ee;
+  --color-cyan-accent-500: #06b6d4;
+  --color-cyan-accent-600: #0891b2;
+  --color-cyan-accent-700: #0e7490;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-gradient: gradient-shift 14s ease infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+/* ---------------------------------------------------------------
+   Tokens semánticos: cambian de valor según el tema
+--------------------------------------------------------------- */
+:root {
+  --bg: #f8fafc;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text: #0b1020;
+  --text-muted: #4b5675;
+  --text-faint: #64748b;
+  --glow: rgb(37 99 235 / 0.16);
+  --grid-line: rgb(11 16 32 / 0.06);
+  --nav-bg: rgb(248 250 252 / 0.72);
+}
+
+.dark {
+  --bg: #050816;
+  --bg-elevated: #0b1020;
+  --surface: #0f152b;
+  --surface-muted: #131a34;
+  --border-subtle: #222b4d;
+  --border-strong: #33406b;
+  --text: #f1f5f9;
+  --text-muted: #a5b1cc;
+  --text-faint: #8492b4;
+  --glow: rgb(124 58 237 / 0.28);
+  --grid-line: rgb(148 163 184 / 0.09);
+  --nav-bg: rgb(5 8 22 / 0.72);
+}
+
+/* `inline` mantiene la referencia a la variable en la utilidad generada,
+   de modo que las clases (bg-bg, text-muted…) reaccionan al cambio de tema. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-subtle: var(--border-subtle);
+  --color-strong: var(--border-strong);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-subtle);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Compensa la navbar sticky al saltar a un ancla. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    /* Ningún efecto decorativo puede provocar scroll horizontal. */
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-ai-500);
+    color: #fff;
+  }
+
+  /* Transición de tema: sólo activa durante el cambio, para no
+     interferir con el resto de animaciones. */
+  html.theme-transition,
+  html.theme-transition * {
+    transition:
+      background-color 320ms var(--ease-out-expo),
+      border-color 320ms var(--ease-out-expo),
+      color 320ms var(--ease-out-expo),
+      fill 320ms var(--ease-out-expo) !important;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-brand-500),
+      var(--color-ai-500) 45%,
+      var(--color-cyan-accent-500)
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .grid-backdrop {
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .nav-glass {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Accesibilidad: respetar la preferencia del sistema
+--------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

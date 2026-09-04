@@ -1,0 +1,9 @@
+# Configuración de agentes y del editor: no forma parte del sitio
+.claude/
+.agents/
+.mcp.json
+
+# Metadatos y secretos locales del CLI de Vercel
+.vercel/
+.env
+.env.*

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --yes html-validate --config /tmp/claude-0/-app/718ce92b-4864-4375-af3f-9aa3e59add6d/scratchpad/htmlval.json index.html)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(npm install *)",
+      "Bash(node test.js)",
+      "Bash(node -e ' *)",
+      "Bash(node --check /app/script.js)",
+      "Bash(pkill -f \"listen\\(4173\")",
+      "Bash(pkill -f \"4173\")",
+      "Bash(command -v vercel)",
+      "Bash(vercel --version)"
+    ]
+  }
+}

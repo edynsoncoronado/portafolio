@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#050816" />
+      <stop offset="1" stop-color="#0B1020" />
+    </linearGradient>
+    <linearGradient id="accent" x1="120" y1="0" x2="900" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB" />
+      <stop offset="0.5" stop-color="#7C3AED" />
+      <stop offset="1" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g opacity="0.16" stroke="#7C3AED" stroke-width="1">
+    <path d="M0 160h1200M0 320h1200M0 480h1200M240 0v630M480 0v630M720 0v630M960 0v630" />
+  </g>
+  <circle cx="1000" cy="140" r="180" fill="#7C3AED" opacity="0.18" />
+  <circle cx="180" cy="520" r="160" fill="#2563EB" opacity="0.18" />
+  <g transform="translate(96 150)">
+    <path
+      d="M0 0v96M0 48l48-48M0 48l48 48"
+      stroke="url(#accent)"
+      stroke-width="10"
+      stroke-linecap="round"
+      fill="none"
+    />
+  </g>
+  <text
+    x="96"
+    y="330"
+    fill="#F8FAFC"
+    font-family="Space Grotesk, Inter, system-ui, sans-serif"
+    font-size="72"
+    font-weight="700"
+  >
+    KERULab
+  </text>
+  <text
+    x="96"
+    y="404"
+    fill="#94A3B8"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="34"
+    font-weight="500"
+  >
+    Procesos, automatización e inteligencia artificial
+  </text>
+  <text
+    x="96"
+    y="452"
+    fill="#94A3B8"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="34"
+    font-weight="500"
+  >
+    para empresas que quieren operar mejor.
+  </text>
+  <g transform="translate(96 510)" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#E2E8F0">
+    <rect x="0" y="0" width="190" height="52" rx="26" fill="#2563EB" opacity="0.22" stroke="#2563EB" />
+    <text x="30" y="34">Consultoría</text>
+    <rect x="212" y="0" width="140" height="52" rx="26" fill="#7C3AED" opacity="0.22" stroke="#7C3AED" />
+    <text x="248" y="34">ERP SaaS</text>
+    <rect x="374" y="0" width="270" height="52" rx="26" fill="#06B6D4" opacity="0.22" stroke="#06B6D4" />
+    <text x="404" y="34">IA &amp; Automatización</text>
+  </g>
+</svg>

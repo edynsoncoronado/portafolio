@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>KERULab | Software, Automatización e Inteligencia Artificial para Empresas</title>
+    <meta
+      name="description"
+      content="KERULab ayuda a empresas a optimizar procesos mediante consultoría, ERP SaaS, automatización, software personalizado e inteligencia artificial."
+    />
+    <meta name="theme-color" content="#050816" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="canonical" href="https://kerulab.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="KERULab" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content="https://kerulab.com/" />
+    <meta
+      property="og:title"
+      content="KERULab | Software, Automatización e Inteligencia Artificial para Empresas"
+    />
+    <meta
+      property="og:description"
+      content="Analizamos tus procesos, identificamos oportunidades de automatización y construimos la solución: consultoría, ERP SaaS, software a medida e IA."
+    />
+    <meta property="og:image" content="/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="KERULab | Software, Automatización e Inteligencia Artificial para Empresas"
+    />
+    <meta
+      name="twitter:description"
+      content="Analizamos tus procesos, identificamos oportunidades de automatización y construimos la solución tecnológica."
+    />
+    <meta name="twitter:image" content="/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+
+    <script>
+      // Anti-FOUC: aplica el tema guardado antes del primer pintado.
+      (function () {
+        try {
+          var stored = localStorage.getItem('kerulab-theme');
+          var prefersDark =
+            !window.matchMedia || window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+          var root = document.documentElement;
+          root.classList.toggle('dark', theme === 'dark');
+          root.style.colorScheme = theme;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#050816' : '#F8FAFC');
+
+          var lang = localStorage.getItem('kerulab-lang');
+          if (lang !== 'es' && lang !== 'en') {
+            lang = (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+          }
+          root.lang = lang;
+        } catch (e) {
+          /* localStorage bloqueado: se usan los valores por defecto del HTML */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

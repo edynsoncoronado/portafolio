@@ -1,0 +1,32 @@
+{
+    "name": "kilocode-landing-page",
+
+    "dockerComposeFile": "docker-compose.yml",
+
+    "service": "frontend-app",
+
+    "workspaceFolder": "/app",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "kilocode.kilo-code",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "bradlc.vscode-tailwindcss"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "[javascript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "[json]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                }
+            }
+        }
+    },
+    // "overrideCommand": false,   // Permite que el contenedor se inicie con el comando predeterminado del contenedor en lugar de sobrescribirlo.
+    "remoteUser": "root"
+}

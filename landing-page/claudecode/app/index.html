@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sonríe Perú — Clínica dental en San Isidro, Lima</title>
+  <meta name="description" content="Clínica dental en San Isidro y Miraflores. Agenda tu cita en línea en menos de un minuto: elige tratamiento, día y hora, y te confirmamos por WhatsApp.">
+  <meta name="theme-color" content="#0E7F76">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🦷</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip" href="#agendar">Saltar al formulario de citas</a>
+
+  <header class="nav">
+    <div class="shell nav-in">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <path d="M5 13.5a11 11 0 0 0 22 0"></path>
+          <path d="M11.5 6.5v3M20.5 6.5v3"></path>
+        </svg>
+        <span>Sonríe Perú</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#proceso">Cómo funciona</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#visitanos">Visítanos</a>
+      </nav>
+
+      <a class="nav-tel" href="tel:+51987654321">+51&nbsp;987&nbsp;654&nbsp;321</a>
+      <a class="nav-cta" href="#agendar">Agendar cita</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO + AGENDADOR ============ -->
+    <div class="shell hero">
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+          <p class="eyebrow">Odontología integral · San Isidro, Lima</p>
+          <h1>La cita dental que <em>sí</em> entra en tu semana.</h1>
+          <p class="hero-lede">Elige tratamiento, día y hora en la agenda real de la clínica. Te confirmamos por WhatsApp en menos de 10 minutos, de lunes a sábado.</p>
+
+          <p class="hero-actions">
+            <a class="btn btn-lg" href="#agendar">Agendar cita</a>
+            <!-- [html-validate-disable-next tel-non-breaking -- el texto del enlace es una acción, no el número] -->
+            <a class="btn btn-lg ghost" href="tel:+51987654321">Llamar ahora</a>
+          </p>
+
+          <div class="facts">
+            <div class="fact"><b>12</b><small>años atendiendo en San Isidro</small></div>
+            <div class="fact"><b>8 500</b><small>pacientes registrados</small></div>
+            <div class="fact"><b>4.9</b><small>promedio de 620 reseñas</small></div>
+          </div>
+        </div>
+
+        <!-- Panel de reserva -->
+        <aside class="panel" id="agendar" aria-labelledby="panel-title">
+          <div class="panel-head">
+            <div class="panel-head-row">
+              <h2 id="panel-title">Agenda tu cita</h2>
+              <span class="panel-step" id="stepLabel">Paso 1 de 3</span>
+            </div>
+            <div class="bar"><i id="bar"></i></div>
+          </div>
+
+          <div class="panel-body">
+
+            <!-- Paso 1 · tratamiento y sede -->
+            <div class="step on" id="s1">
+              <div class="field">
+                <span class="flabel" id="lbl-motivo">¿Qué necesitas?</span>
+                <div class="chips" id="chips" role="group" aria-labelledby="lbl-motivo"></div>
+              </div>
+
+              <div class="field">
+                <label for="sede">Sede</label>
+                <select id="sede">
+                  <option>San Isidro — Av. Pardo y Aliaga 690</option>
+                  <option>Miraflores — Av. Benavides 1180</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn" id="go1" disabled>Elegir fecha y hora</button>
+              <p class="note">La primera consulta incluye evaluación clínica y plan de tratamiento con precios cerrados por escrito.</p>
+            </div>
+
+            <!-- Paso 2 · fecha y hora -->
+            <div class="step" id="s2">
+              <div class="field">
+                <span class="flabel" id="lbl-dia">Elige el día</span>
+                <div class="days" id="days" role="group" aria-labelledby="lbl-dia"></div>
+              </div>
+
+              <div class="field">
+                <span class="flabel" id="lbl-hora">Horarios libres <span class="free" id="freeCount"></span></span>
+                <div id="slotWrap" role="group" aria-labelledby="lbl-hora"></div>
+              </div>
+
+              <div class="actions">
+                <button type="button" class="btn ghost" data-back="1">Atrás</button>
+                <button type="button" class="btn" id="go2" disabled>Continuar</button>
+              </div>
+            </div>
+
+            <!-- Paso 3 · datos del paciente -->
+            <div class="step" id="s3">
+              <dl class="summary" id="sum"></dl>
+
+              <div class="row2">
+                <div class="field">
+                  <label for="nombre">Nombre y apellido</label>
+                  <input type="text" id="nombre" autocomplete="name" placeholder="Ana Quispe">
+                </div>
+                <div class="field">
+                  <label for="tel">Celular / WhatsApp</label>
+                  <input type="tel" id="tel" autocomplete="tel" inputmode="numeric" placeholder="987 654 321">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="notas">Algo que debamos saber <span class="opt">(opcional)</span></label>
+                <textarea id="notas" placeholder="Dolor en una muela de abajo desde el martes, tomo losartán."></textarea>
+              </div>
+
+              <p class="err" id="err" role="alert" hidden></p>
+
+              <div class="actions">
+                <button type="button" class="btn ghost" data-back="2">Atrás</button>
+                <button type="button" class="btn" id="go3">Reservar cita</button>
+              </div>
+              <p class="note">Reservar no cuesta nada y puedes cambiarla hasta 4 horas antes escribiéndonos por WhatsApp.</p>
+            </div>
+
+            <!-- Paso 4 · confirmación -->
+            <div class="step" id="s4">
+              <div class="done">
+                <div class="tick" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"></path></svg>
+                </div>
+                <h3>Cita apartada</h3>
+                <p class="note" id="doneText"></p>
+                <span class="code" id="code"></span>
+                <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+                <button type="button" class="btn ghost wide" id="reset">Agendar otra cita</button>
+                <p class="note">Guardamos tu espacio por 2 horas. Si no recibimos tu confirmación, lo liberamos para otro paciente.</p>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- ============ TRATAMIENTOS ============ -->
+    <section id="tratamientos">
+      <div class="shell sec">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Tratamientos</p>
+          <h2>Precios cerrados antes de sentarte en el sillón.</h2>
+          <p>Estos son los precios de lista vigentes. Si tu caso necesita algo distinto, lo sabrás en la primera consulta y por escrito — nunca a mitad del tratamiento.</p>
+        </div>
+
+        <div class="tlist reveal" id="tlist"></div>
+
+        <p class="note tnote reveal">Precios en soles. Convenios con Pacífico EPS, Rímac, Mapfre y La Positiva: la cobertura se aplica al momento de facturar.</p>
+      </div>
+    </section>
+
+    <!-- ============ PROCESO ============ -->
+    <section id="proceso">
+      <div class="shell sec">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Cómo funciona</p>
+          <h2>Tres pasos, sin llamadas en espera.</h2>
+        </div>
+
+        <ol class="steps3 reveal">
+          <li class="st">
+            <b>PASO 01</b>
+            <h3>Eliges tu espacio</h3>
+            <p>La agenda de arriba muestra los horarios que realmente quedan libres en la sede que escojas. Apartas el que te sirve en menos de un minuto.</p>
+          </li>
+          <li class="st">
+            <b>PASO 02</b>
+            <h3>Confirmamos por WhatsApp</h3>
+            <p>Recibes un mensaje de nuestra recepción con tu código de reserva. Ahí resolvemos dudas de cobertura, precios o preparación previa.</p>
+          </li>
+          <li class="st">
+            <b>PASO 03</b>
+            <h3>Vienes y te atendemos</h3>
+            <p>Llega 10 minutos antes con tu DNI. Si es tu primera vez, la evaluación y el plan de tratamiento salen ese mismo día.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ EQUIPO ============ -->
+    <section id="equipo">
+      <div class="shell sec">
+        <div class="sec-head reveal">
+          <p class="eyebrow">Quiénes te atienden</p>
+          <h2>Especialistas colegiados, no rotativos.</h2>
+          <p>Verás siempre al mismo profesional durante tu tratamiento. Todos están inscritos en el Colegio Odontológico del Perú.</p>
+        </div>
+
+        <div class="team reveal">
+          <article class="doc">
+            <div class="ini" aria-hidden="true">MV</div>
+            <h3>Dra. Mariana Valdez</h3>
+            <p class="spec">Rehabilitación oral e implantes</p>
+            <p class="cop">COP 24817 · 14 años de ejercicio</p>
+          </article>
+          <article class="doc">
+            <div class="ini" aria-hidden="true">JR</div>
+            <h3>Dr. Joaquín Ramírez</h3>
+            <p class="spec">Ortodoncia y ortopedia maxilar</p>
+            <p class="cop">COP 31204 · 11 años de ejercicio</p>
+          </article>
+          <article class="doc">
+            <div class="ini" aria-hidden="true">CS</div>
+            <h3>Dra. Camila Salazar</h3>
+            <p class="spec">Odontopediatría</p>
+            <p class="cop">COP 38650 · 8 años de ejercicio</p>
+          </article>
+          <article class="doc">
+            <div class="ini" aria-hidden="true">AF</div>
+            <h3>Dr. Andrés Flores</h3>
+            <p class="spec">Endodoncia y urgencias</p>
+            <p class="cop">COP 29033 · 12 años de ejercicio</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISÍTANOS + FAQ ============ -->
+    <section id="visitanos">
+      <div class="shell sec">
+        <div class="split">
+
+          <div class="reveal">
+            <div class="sec-head">
+              <p class="eyebrow">Visítanos</p>
+              <h2>Estamos a dos cuadras del Óvalo Gutiérrez.</h2>
+            </div>
+
+            <dl class="info">
+              <div>
+                <dt>Dirección</dt>
+                <dd>Av. Pardo y Aliaga 690, of. 302<br>San Isidro, Lima 15073<br>
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Pardo+y+Aliaga+690+San+Isidro+Lima" target="_blank" rel="noopener">Cómo llegar →</a>
+                </dd>
+              </div>
+              <div><dt>Lun a Vie</dt><dd class="hrs">09:00 – 13:00 · 15:00 – 20:00</dd></div>
+              <div><dt>Sábados</dt><dd class="hrs">09:00 – 14:00</dd></div>
+              <div><dt>Urgencias</dt><dd class="hrs">Todos los días hasta las 22:00</dd></div>
+              <div><dt>Teléfono</dt><dd><a href="tel:+51987654321">+51&nbsp;987&nbsp;654&nbsp;321</a></dd></div>
+              <div><dt>Estacionamiento</dt><dd>Libre para pacientes en el sótano del edificio</dd></div>
+              <div><dt>Seguros</dt><dd>Pacífico EPS · Rímac · Mapfre · La Positiva</dd></div>
+            </dl>
+          </div>
+
+          <div class="reveal">
+            <div class="sec-head">
+              <p class="eyebrow">Preguntas frecuentes</p>
+              <h2>Lo que más nos preguntan.</h2>
+            </div>
+
+            <details>
+              <summary>¿Tengo que pagar algo para reservar?</summary>
+              <p>No. Apartar tu cita es gratuito y no pedimos tarjeta. Pagas recién el día de la atención, en efectivo, Yape, Plin o tarjeta.</p>
+            </details>
+            <details>
+              <summary>¿Atienden por seguro o EPS?</summary>
+              <p>Sí. Trabajamos con Pacífico EPS, Rímac, Mapfre y La Positiva. Cuando confirmemos tu cita por WhatsApp te decimos exactamente cuánto cubre tu plan y cuánto sería el copago.</p>
+            </details>
+            <details>
+              <summary>Tengo dolor fuerte hoy. ¿Qué hago?</summary>
+              <p>Elige «Urgencia dental» en la agenda y escoge el horario más cercano; si no encuentras uno, llámanos al +51&nbsp;987&nbsp;654&nbsp;321. Reservamos dos espacios diarios para urgencias hasta las 22:00.</p>
+            </details>
+            <details>
+              <summary>¿Puedo cambiar o cancelar mi cita?</summary>
+              <p>Sí, hasta 4 horas antes por WhatsApp, sin costo. Avisarnos con tiempo permite que otro paciente use ese espacio.</p>
+            </details>
+            <details>
+              <summary>¿Ofrecen financiamiento para tratamientos largos?</summary>
+              <p>Para ortodoncia, implantes y rehabilitaciones fraccionamos el monto en cuotas mensuales sin intereses, con un pago inicial acordado en la consulta.</p>
+            </details>
+            <details>
+              <summary>¿Atienden niños?</summary>
+              <p>Sí. La Dra. Camila Salazar lleva odontopediatría y la primera visita está pensada para que el niño conozca el consultorio sin procedimientos invasivos.</p>
+            </details>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="foot">
+        <div class="foot-brand">
+          <a class="brand" href="#top">
+            <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <path d="M5 13.5a11 11 0 0 0 22 0"></path>
+              <path d="M11.5 6.5v3M20.5 6.5v3"></path>
+            </svg>
+            <span>Sonríe Perú</span>
+          </a>
+          <p>Clínica dental en San Isidro y Miraflores. Odontología general, estética y especialidades desde 2013.</p>
+        </div>
+
+        <div class="foot-col">
+          <strong>Clínica</strong>
+          <a href="#tratamientos">Tratamientos</a>
+          <a href="#equipo">Equipo</a>
+          <a href="#visitanos">Sedes y horarios</a>
+        </div>
+
+        <div class="foot-col">
+          <strong>Contacto</strong>
+          <a href="tel:+51987654321">+51&nbsp;987&nbsp;654&nbsp;321</a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:citas@sonrieperu.pe">citas@sonrieperu.pe</a>
+        </div>
+
+        <div class="foot-col">
+          <strong>Reserva</strong>
+          <a href="#agendar">Agendar cita →</a>
+        </div>
+      </div>
+
+      <div class="legal">
+        <span>© 2026 Clínica Dental Sonríe Perú</span>
+        <span>Av. Pardo y Aliaga 690, San Isidro, Lima</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CTA flotante para móvil -->
+  <a class="fab" href="#agendar">Agendar cita</a>
+
+  <script src="script.js"></script>
+</body>
+</html>
