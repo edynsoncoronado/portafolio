@@ -1,0 +1,48 @@
+{
+    "name": "Odoo Development",
+
+    "dockerComposeFile": "docker-compose.yml",
+
+    "service": "odoo",
+
+    "workspaceFolder": "/workspace",
+
+    "shutdownAction": "stopCompose",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.debugpy",
+                "ms-python.vscode-pylance",
+                "eamodio.gitlens",
+                "redhat.vscode-yaml",
+                "charliermarsh.ruff"
+            ],
+
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+
+                "python.analysis.extraPaths": [
+                    "/workspace/odoo",
+                    "/workspace/odoo/addons",
+                    "/workspace/addons-custom"
+                ],
+
+                "python.analysis.autoImportCompletions": true,
+
+                "editor.formatOnSave": true,
+
+                "files.exclude": {
+                    "**/__pycache__": true,
+                    "**/*.pyc": true,
+                    "**/.pytest_cache": true
+                }
+            }
+        }
+    },
+
+    "remoteUser": "vscode",
+
+    // "postCreateCommand": "bash .devcontainer/setup.sh"
+}
