@@ -5,7 +5,11 @@ requires-python = ">=3.12"
 [[package]]
 name = "activity-steps"
 version = "0.1.0"
+<<<<<<< HEAD
 source = { editable = "." }
+=======
+source = { virtual = "." }
+>>>>>>> 6e470df (chore: setup + AGENTS.md + constitución)
 
 [package.dev-dependencies]
 dev = [
