@@ -1,0 +1,11 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: activity-steps-sdd
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../app:/workspace
+    tty: true

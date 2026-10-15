@@ -1,0 +1,25 @@
+{
+    "name": "activity-steps-sdd",
+
+    "dockerComposeFile": "docker-compose.yml",
+
+    "service": "backend",
+
+    "workspaceFolder": "/workspace",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "mermaidchart.vscode-mermaid-chart",
+                "anthropic.claude-code"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.analysis.typeCheckingMode": "basic"
+            }
+        }
+    },
+    "remoteUser": "root"
+}
