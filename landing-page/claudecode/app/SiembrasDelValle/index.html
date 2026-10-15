@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Siembras del Valle — Materiales de construcción en Lima Sur</title>
+  <meta name="description" content="Distribuidor de cemento, fierro, ladrillo y agregados en Lima Sur. Arma tu pedido por etapa de obra, calcula cuánto material necesitas y recíbelo en obra el mismo día.">
+  <meta name="theme-color" content="#1A4FA0">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A4FA0'/><rect x='5' y='18' width='22' height='5' fill='%23E9EDF1'/><rect x='5' y='10' width='14' height='5' fill='%23E9EDF1'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;500;600&family=Roboto+Mono:wght@400;500;700&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+  <a class="skip" href="#armador">Saltar al armador de pedido</a>
+
+  <header class="nav">
+    <div class="shell nav-in">
+      <a class="brand" href="#top">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect x="4" y="19" width="24" height="6"></rect>
+          <rect x="4" y="10.5" width="15" height="6"></rect>
+          <rect x="21" y="10.5" width="7" height="6" class="brand-dim"></rect>
+        </svg>
+        <span class="brand-txt">
+          <strong>Siembras del Valle</strong>
+          <em>Materiales de construcción</em>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#armador">Armar pedido</a>
+        <a href="#catalogo">Precios</a>
+        <a href="#como">Cómo compras</a>
+        <a href="#almacenes">Almacenes</a>
+        <a href="#faq">Preguntas</a>
+      </nav>
+
+      <div class="nav-act">
+        <!-- [html-validate-disable-next tel-non-breaking -- el texto del enlace es una acción, no el número telefónico] -->
+        <a class="nav-tel" href="tel:+51987654321">Llamar al almacén</a>
+        <button type="button" class="theme-btn" id="theme-btn" aria-pressed="false">
+          <span class="mono" id="theme-txt">Modo claro</span>
+        </button>
+        <a class="btn btn-solid nav-cta" href="#armador">Armar pedido</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO + ARMADOR ============ -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="shell hero-grid">
+
+        <div class="hero-copy">
+          <p class="tag mono">Villa El Salvador · Lurín · Pachacámac</p>
+          <h1 id="hero-h">Tu obra no para por falta de material.</h1>
+          <p class="lede">Cemento, fierro, ladrillo y agregados con stock del día. Dinos qué vas a vaciar y cuántos metros: acá mismo te sale la lista con cantidades y precio, y la mandas por WhatsApp en un toque.</p>
+
+          <div class="hero-btns">
+            <a class="btn btn-solid" href="#armador">Armar mi pedido</a>
+            <a class="btn btn-ghost" href="#catalogo">Ver lista de precios</a>
+          </div>
+
+          <dl class="facts">
+            <div class="fact">
+              <dt>Abasteciendo obras desde</dt>
+              <dd class="mono">2007</dd>
+            </div>
+            <div class="fact">
+              <dt>Despacho el mismo día si pides antes de</dt>
+              <dd class="mono">3:00 p.m.</dd>
+            </div>
+            <div class="fact">
+              <dt>Maestros que compran cada mes</dt>
+              <dd class="mono">+900</dd>
+            </div>
+            <div class="fact">
+              <dt>Almacenes propios</dt>
+              <dd class="mono">2</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- ---------- ARMADOR ---------- -->
+        <div class="pad" id="armador">
+          <div class="pad-head">
+            <div>
+              <h2 class="pad-title">Nota de pedido</h2>
+              <p class="pad-sub mono">Sin compromiso · Precios con IGV</p>
+            </div>
+            <p class="pad-step mono" id="paso-label" aria-live="polite">Paso 1 de 3</p>
+          </div>
+
+          <div class="bar" role="presentation">
+            <span class="bar-fill" id="bar-fill"></span>
+          </div>
+
+          <form id="pedido" novalidate>
+
+            <!-- PASO 1 -->
+            <fieldset class="paso" id="paso-1">
+              <legend class="paso-leg">¿Qué vas a hacer?</legend>
+
+              <div class="etapas" role="group" aria-label="Etapa de obra">
+                <label class="etapa">
+                  <input type="radio" name="etapa" value="cimentacion" checked>
+                  <span class="etapa-box">
+                    <span class="etapa-n mono">01</span>
+                    <span class="etapa-t">Cimentación</span>
+                    <span class="etapa-d">Zapatas, cimiento corrido y falso piso</span>
+                  </span>
+                </label>
+                <label class="etapa">
+                  <input type="radio" name="etapa" value="muros">
+                  <span class="etapa-box">
+                    <span class="etapa-n mono">02</span>
+                    <span class="etapa-t">Muros</span>
+                    <span class="etapa-d">Asentado de ladrillo y columnas</span>
+                  </span>
+                </label>
+                <label class="etapa">
+                  <input type="radio" name="etapa" value="techo">
+                  <span class="etapa-box">
+                    <span class="etapa-n mono">03</span>
+                    <span class="etapa-t">Techo</span>
+                    <span class="etapa-d">Losa aligerada de 20 cm</span>
+                  </span>
+                </label>
+                <label class="etapa">
+                  <input type="radio" name="etapa" value="acabados">
+                  <span class="etapa-box">
+                    <span class="etapa-n mono">04</span>
+                    <span class="etapa-t">Acabados</span>
+                    <span class="etapa-d">Tarrajeo y piso porcelanato</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="m2-row">
+                <label class="fld m2-fld">
+                  <span class="fld-lab">Metros cuadrados <em id="m2-hint">de área a vaciar</em></span>
+                  <input type="number" id="m2" name="m2" min="1" max="2000" step="1" value="60" inputmode="numeric" autocomplete="off">
+                </label>
+                <button type="button" class="btn btn-ghost btn-sm" id="recalc">Recalcular lista</button>
+              </div>
+              <p class="err" id="err-m2" role="alert"></p>
+
+              <div class="lista-wrap">
+                <table class="lista">
+                  <caption class="sr-only">Materiales calculados para tu pedido</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Material</th>
+                      <th scope="col" class="num">Cantidad</th>
+                      <th scope="col" class="num">P. unit.</th>
+                      <th scope="col" class="num">Subtotal</th>
+                      <th scope="col"><span class="sr-only">Quitar</span></th>
+                    </tr>
+                  </thead>
+                  <tbody id="lista-body"></tbody>
+                </table>
+              </div>
+
+              <div class="add-row">
+                <label class="fld">
+                  <span class="fld-lab">Agregar otro material</span>
+                  <select id="add-sel">
+                    <option value="">Elige un producto…</option>
+                  </select>
+                </label>
+                <button type="button" class="btn btn-ghost btn-sm" id="add-btn">Agregar</button>
+              </div>
+
+              <div class="total">
+                <span class="total-lab mono">Subtotal materiales</span>
+                <span class="total-val mono" id="total-1">S/ 0.00</span>
+              </div>
+              <p class="err" id="err-lista" role="alert"></p>
+
+              <div class="paso-acts">
+                <button type="button" class="btn btn-solid btn-wide" id="a-paso-2">Continuar a entrega</button>
+              </div>
+            </fieldset>
+
+            <!-- PASO 2 -->
+            <fieldset class="paso" id="paso-2" hidden>
+              <legend class="paso-leg">¿Dónde y cuándo lo dejamos?</legend>
+
+              <div class="modos" role="group" aria-label="Modo de entrega">
+                <label class="modo">
+                  <input type="radio" name="modo" value="despacho" checked>
+                  <span class="modo-box">
+                    <span class="modo-t">Despacho a obra</span>
+                    <span class="modo-d mono">Camión + estibador</span>
+                  </span>
+                </label>
+                <label class="modo">
+                  <input type="radio" name="modo" value="recojo">
+                  <span class="modo-box">
+                    <span class="modo-t">Recojo en almacén</span>
+                    <span class="modo-d mono">Sin costo de flete</span>
+                  </span>
+                </label>
+              </div>
+
+              <div id="despacho-campos">
+                <label class="fld">
+                  <span class="fld-lab">Distrito de la obra</span>
+                  <select id="distrito" name="distrito">
+                    <option value="">Elige el distrito…</option>
+                  </select>
+                </label>
+                <p class="err" id="err-distrito" role="alert"></p>
+
+                <label class="fld">
+                  <span class="fld-lab">Dirección o referencia de la obra</span>
+                  <input type="text" id="direccion" name="direccion" autocomplete="address-line1" placeholder="Mz. F Lt. 12, altura del mercado">
+                </label>
+                <p class="err" id="err-direccion" role="alert"></p>
+              </div>
+
+              <div id="recojo-aviso" class="aviso" hidden>
+                <p>Recoges en <strong>Almacén Villa El Salvador</strong>, Av. Separadora Industrial 1840. Guardamos tu pedido 48 horas desde la fecha que elijas.</p>
+              </div>
+
+              <h3 class="sub-h">Fecha de entrega</h3>
+              <div class="dias" id="dias" role="group" aria-label="Fecha de entrega"></div>
+
+              <h3 class="sub-h">Turno</h3>
+              <div class="turnos" id="turnos" role="group" aria-label="Turno de entrega"></div>
+              <p class="err" id="err-fecha" role="alert"></p>
+
+              <div class="total total-desglose">
+                <span class="total-lab mono">Materiales</span>
+                <span class="total-val mono" id="total-mat">S/ 0.00</span>
+              </div>
+              <div class="total total-desglose">
+                <span class="total-lab mono">Flete</span>
+                <span class="total-val mono" id="total-flete">S/ 0.00</span>
+              </div>
+              <div class="total">
+                <span class="total-lab mono">Total</span>
+                <span class="total-val mono" id="total-2">S/ 0.00</span>
+              </div>
+
+              <div class="paso-acts">
+                <button type="button" class="btn btn-ghost" id="b-paso-1">Atrás</button>
+                <button type="button" class="btn btn-solid" id="a-paso-3">Continuar a tus datos</button>
+              </div>
+            </fieldset>
+
+            <!-- PASO 3 -->
+            <fieldset class="paso" id="paso-3" hidden>
+              <legend class="paso-leg">¿A nombre de quién va?</legend>
+
+              <div class="modos" role="group" aria-label="Tipo de cliente">
+                <label class="modo">
+                  <input type="radio" name="cliente" value="familia" checked>
+                  <span class="modo-box">
+                    <span class="modo-t">Para mi casa</span>
+                    <span class="modo-d mono">Compra propia</span>
+                  </span>
+                </label>
+                <label class="modo">
+                  <input type="radio" name="cliente" value="maestro">
+                  <span class="modo-box">
+                    <span class="modo-t">Soy maestro o contratista</span>
+                    <span class="modo-d mono">Precio por volumen</span>
+                  </span>
+                </label>
+              </div>
+
+              <label class="fld">
+                <span class="fld-lab">Nombre y apellido</span>
+                <input type="text" id="nombre" name="nombre" autocomplete="name" placeholder="Rosa Quispe">
+              </label>
+              <p class="err" id="err-nombre" role="alert"></p>
+
+              <label class="fld">
+                <span class="fld-lab">Celular <em>te escribimos por WhatsApp</em></span>
+                <input type="tel" id="celular" name="celular" autocomplete="tel" inputmode="numeric" placeholder="987654321" maxlength="11">
+              </label>
+              <p class="err" id="err-celular" role="alert"></p>
+
+              <label class="chk">
+                <input type="checkbox" id="factura" name="factura">
+                <span>Necesito factura</span>
+              </label>
+
+              <div id="ruc-campo" hidden>
+                <label class="fld">
+                  <span class="fld-lab">RUC</span>
+                  <input type="text" id="ruc" name="ruc" inputmode="numeric" placeholder="20512345678" maxlength="11">
+                </label>
+                <p class="err" id="err-ruc" role="alert"></p>
+              </div>
+
+              <label class="fld">
+                <span class="fld-lab">Algo más que debamos saber <em>opcional</em></span>
+                <textarea id="nota" name="nota" rows="2" placeholder="La calle es angosta, el camión entra hasta la esquina"></textarea>
+              </label>
+
+              <div class="total">
+                <span class="total-lab mono">Total del pedido</span>
+                <span class="total-val mono" id="total-3">S/ 0.00</span>
+              </div>
+
+              <div class="paso-acts">
+                <button type="button" class="btn btn-ghost" id="b-paso-2">Atrás</button>
+                <button type="submit" class="btn btn-solid" id="enviar">Confirmar pedido</button>
+              </div>
+            </fieldset>
+          </form>
+
+          <!-- CONFIRMACIÓN -->
+          <div class="conf" id="conf" hidden>
+            <p class="sello mono">Pedido registrado</p>
+            <h2 class="conf-h">Listo, <span id="conf-nombre">vecino</span>. Tu pedido quedó anotado.</h2>
+            <p class="conf-cod mono" id="conf-cod">SV-0000-0000</p>
+            <dl class="conf-resumen" id="conf-resumen"></dl>
+            <p class="conf-nota">Mándanos el pedido por WhatsApp para que el almacén lo separe. Te confirmamos stock y hora exacta de llegada.</p>
+            <div class="paso-acts">
+              <a class="btn btn-solid" id="wa-link" href="https://wa.me/51987654321" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+              <button type="button" class="btn btn-ghost" id="otro">Hacer otro pedido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section class="band" id="catalogo" aria-labelledby="cat-h">
+      <div class="shell">
+        <p class="tag mono">Lista de precios</p>
+        <h2 id="cat-h">Precio de mostrador, actualizado el lunes de cada semana.</h2>
+        <p class="band-lede">El mismo precio para la señora que lleva 10 bolsas y para el maestro que lleva 200. A partir de 50 bolsas o 5 m³ el precio baja: lo ves cuando te respondemos la cotización.</p>
+
+        <div class="tabla-wrap">
+          <table class="precios">
+            <caption class="sr-only">Lista de precios de materiales con IGV incluido</caption>
+            <thead>
+              <tr>
+                <th scope="col">Material</th>
+                <th scope="col">Presentación</th>
+                <th scope="col" class="num">Precio</th>
+                <th scope="col">Stock hoy</th>
+              </tr>
+            </thead>
+            <tbody id="precios-body"></tbody>
+          </table>
+        </div>
+        <p class="micro mono">Precios en soles, IGV incluido. No incluyen flete. Sujetos a stock del almacén.</p>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO ============ -->
+    <section class="band band-alt" id="como" aria-labelledby="como-h">
+      <div class="shell">
+        <p class="tag mono">Cómo compras</p>
+        <h2 id="como-h">Cuatro pasos, y el camión sale.</h2>
+
+        <ol class="pasos-lista">
+          <li>
+            <span class="pl-n mono">1</span>
+            <h3>Armas la lista acá</h3>
+            <p>Eliges la etapa y los metros. La calculadora te dice cuántas bolsas, cuántas varillas y cuántos ladrillos entran. Si ya sabes lo que necesitas, editas las cantidades a mano.</p>
+          </li>
+          <li>
+            <span class="pl-n mono">2</span>
+            <h3>Te confirmamos stock y precio</h3>
+            <p>Nos llega tu pedido por WhatsApp. En menos de una hora en horario de almacén te decimos qué hay, qué falta y cuánto sale con flete a tu distrito.</p>
+          </li>
+          <li>
+            <span class="pl-n mono">3</span>
+            <h3>Pagas como te quede mejor</h3>
+            <p>Yape, Plin, transferencia o efectivo contra entrega. Con RUC te giramos factura. Los contratistas con línea aprobada pagan a 15 días.</p>
+          </li>
+          <li>
+            <span class="pl-n mono">4</span>
+            <h3>Llega a la obra</h3>
+            <p>El camión sale con estibador. Descargamos donde alcance el vehículo y te avisamos 30 minutos antes para que haya quien reciba.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ EQUIPO ============ -->
+    <section class="band" id="equipo" aria-labelledby="eq-h">
+      <div class="shell">
+        <p class="tag mono">Quién atiende</p>
+        <h2 id="eq-h">Tres personas, nombre y celular. No un formulario que nadie lee.</h2>
+
+        <div class="gente">
+          <article class="persona">
+            <h3>Julio Ramírez Ocampo</h3>
+            <p class="rol mono">Jefe de almacén · Villa El Salvador</p>
+            <p>Dieciocho años moviendo material. Es quien te dice si el fierro que pides está en piso o entra el jueves.</p>
+            <!-- [html-validate-disable-next tel-non-breaking -- el texto del enlace es una acción, no el número telefónico] -->
+            <a class="link" href="tel:+51987654322">Llamar a Julio</a>
+          </article>
+          <article class="persona">
+            <h3>Marisol Ttito Palomino</h3>
+            <p class="rol mono">Cotizaciones y facturación</p>
+            <p>Responde los pedidos de WhatsApp y arma las cotizaciones con factura. Si necesitas precio por volumen, es con ella.</p>
+            <!-- [html-validate-disable-next tel-non-breaking -- el texto del enlace es una acción, no el número telefónico] -->
+            <a class="link" href="tel:+51987654323">Llamar a Marisol</a>
+          </article>
+          <article class="persona">
+            <h3>Édison Chávez Rojas</h3>
+            <p class="rol mono">Despacho y rutas</p>
+            <p>Coordina los camiones. Te avisa la hora real de llegada y resuelve cuando la calle no da para el volquete.</p>
+            <!-- [html-validate-disable-next tel-non-breaking -- el texto del enlace es una acción, no el número telefónico] -->
+            <a class="link" href="tel:+51987654324">Llamar a Édison</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ALMACENES ============ -->
+    <section class="band band-alt" id="almacenes" aria-labelledby="alm-h">
+      <div class="shell">
+        <p class="tag mono">Datos prácticos</p>
+        <h2 id="alm-h">Dónde estamos y hasta dónde llegamos.</h2>
+
+        <div class="datos-grid">
+          <article class="dato">
+            <h3>Almacén Villa El Salvador</h3>
+            <p class="mono">Av. Separadora Industrial 1840</p>
+            <p class="mono">Lun a Vie 7:00 a.m. – 6:00 p.m.<br>Sáb 7:00 a.m. – 2:00 p.m.<br>Dom cerrado</p>
+          </article>
+          <article class="dato">
+            <h3>Almacén Lurín</h3>
+            <p class="mono">Antigua Panamericana Sur km 34.5</p>
+            <p class="mono">Lun a Vie 7:00 a.m. – 5:00 p.m.<br>Sáb 7:00 a.m. – 1:00 p.m.<br>Dom cerrado</p>
+          </article>
+          <article class="dato">
+            <h3>Formas de pago</h3>
+            <p>Efectivo contra entrega, Yape, Plin, transferencia BCP e Interbank. Factura con RUC. Crédito a 15 días para contratistas con línea aprobada.</p>
+          </article>
+          <article class="dato">
+            <h3>Cobertura de flete</h3>
+            <div class="tabla-wrap">
+              <table class="flete">
+                <caption class="sr-only">Costo de flete por distrito</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Zona</th>
+                    <th scope="col" class="num">Flete</th>
+                  </tr>
+                </thead>
+                <tbody id="flete-body"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="band" id="faq" aria-labelledby="faq-h">
+      <div class="shell shell-narrow">
+        <p class="tag mono">Preguntas</p>
+        <h2 id="faq-h">Lo que más nos preguntan en el mostrador.</h2>
+
+        <div class="faqs">
+          <details>
+            <summary>¿La calculadora me da la cantidad exacta?</summary>
+            <p>Te da un estimado de obra con los rendimientos que usamos en Lima Sur. Sirve para saber cuánto pedir y cuánto vas a gastar, pero el metrado fino lo define tu maestro o tu ingeniero según el plano. Siempre pide un 5% de más en ladrillo: algo se rompe en la descarga.</p>
+          </details>
+          <details>
+            <summary>¿Venden al por menor o solo por volumen?</summary>
+            <p>Las dos. Puedes llevar una bolsa de cemento o 400. El precio de lista es el mismo hasta 50 bolsas; de ahí para arriba te hacemos precio y te lo decimos al cotizar.</p>
+          </details>
+          <details>
+            <summary>¿Hasta qué hora pido para que llegue hoy?</summary>
+            <p>Hasta las 3:00 p.m. de lunes a viernes y hasta las 11:00 a.m. los sábados, siempre que el material esté en piso. Después de esa hora el pedido sale al día siguiente hábil.</p>
+          </details>
+          <details>
+            <summary>¿El precio incluye la descarga?</summary>
+            <p>Sí. El camión va con estibador y descarga hasta donde llega el vehículo. Si hay que subir material a un segundo piso o cargar más de 30 metros desde la calle, se cobra aparte y te lo decimos antes de despachar.</p>
+          </details>
+          <details>
+            <summary>¿Qué pasa si me sobra material?</summary>
+            <p>Recibimos devolución de bolsas de cemento cerradas y ladrillo en buen estado hasta 7 días después de la entrega, con la boleta. Los agregados a granel no se devuelven.</p>
+          </details>
+          <details>
+            <summary>¿Trabajan con constructoras?</summary>
+            <p>Sí, con orden de compra y factura. Para obras con cronograma armamos un calendario de entregas por etapa. Eso se conversa con Marisol, no por el formulario.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="shell pie-grid">
+      <div>
+        <p class="pie-marca">Siembras del Valle</p>
+        <p class="mono">Distribuidora de materiales de construcción</p>
+        <p class="mono">RUC 20512345678</p>
+      </div>
+      <div>
+        <h2 class="pie-h">Contacto</h2>
+        <p>
+          <!-- [html-validate-disable-next tel-non-breaking -- el texto del enlace es una acción, no el número telefónico] -->
+          <a class="link" href="tel:+51987654321">Llamar al almacén</a>
+        </p>
+        <p class="mono">WhatsApp +51&nbsp;987&nbsp;654&nbsp;321</p>
+        <p><a class="link" href="mailto:pedidos@siembrasdelvalle.pe">pedidos@siembrasdelvalle.pe</a></p>
+      </div>
+      <div>
+        <h2 class="pie-h">Almacenes</h2>
+        <p class="mono">Av. Separadora Industrial 1840,<br>Villa El Salvador</p>
+        <p class="mono">Antigua Panamericana Sur km 34.5,<br>Lurín</p>
+      </div>
+      <div>
+        <h2 class="pie-h">Atención</h2>
+        <p class="mono">Lun a Vie 7:00 a.m. – 6:00 p.m.</p>
+        <p class="mono">Sáb 7:00 a.m. – 2:00 p.m.</p>
+        <p class="mono">Dom cerrado</p>
+      </div>
+    </div>
+    <div class="shell pie-fin">
+      <p class="mono">© 2026 Siembras del Valle S.A.C.</p>
+      <p class="mono">Precios referenciales sujetos a stock.</p>
+    </div>
+  </footer>
+
+  <div class="barra-movil">
+    <div class="bm-in">
+      <span class="bm-txt mono" id="bm-txt">Calcula tu material</span>
+      <a class="btn btn-solid btn-sm" href="#armador">Armar pedido</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
