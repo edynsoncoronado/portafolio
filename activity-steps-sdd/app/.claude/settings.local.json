@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test ! -e .gitignore && printf 'activities.json\\\\n.venv/\\\\n.pytest_cache/\\\\n__pycache__/\\\\n' > .gitignore && wc -l docs/constitution.md && cat .gitignore)"
+    ],
+    "additionalDirectories": [
+      "/workspace"
+    ]
+  }
+}
