@@ -28,6 +28,8 @@ Los textos son literales y se comprueban tal cual.
 | E-07 | no encontrada | «Actividad no encontrada.» |
 | E-08 | almacenamiento | «No se pudieron leer los datos guardados.» |
 | E-09 | almacenamiento | «No se pudieron guardar los datos.» |
+| E-10 | validación | «El cuerpo de la petición no es un JSON válido.» |
+| E-11 | no encontrada | «Ruta no encontrada.» |
 
 ### Definiciones
 - **Carácter**: punto de código Unicode tras normalizar el texto a NFC. Una letra con tilde combinada cuenta como uno; un emoji compuesto cuenta como varios.
@@ -39,13 +41,15 @@ Los textos son literales y se comprueban tal cual.
 - Si el nombre falta o queda vacío tras recortar, entonces el sistema deberá rechazar la operación con E-01.
 - Si el nombre recortado supera los 100 caracteres, entonces el sistema deberá rechazar la operación con E-02.
 - Si ya existe otra actividad con el mismo nombre normalizado, entonces el sistema deberá rechazar la operación con E-05.
-- Si el nombre llega con un valor que no es texto, entonces el sistema deberá convertirlo a texto antes de validarlo. [NECESITA ACLARACIÓN: ver duda N2]
+- Si el nombre es nulo, entonces el sistema deberá rechazar la operación con E-01.
+- Si el nombre llega con un valor que no es texto ni nulo, entonces el sistema deberá convertirlo a su representación JSON en texto antes de validarlo.
 
 ### RF-2 — Descripción opcional
 - Cuando la usuaria aporte una descripción, el sistema deberá guardarla recortada.
 - Cuando la usuaria aporte una descripción que queda vacía tras recortar, el sistema deberá guardar la actividad sin descripción.
 - Si la descripción recortada supera los 500 caracteres, entonces el sistema deberá rechazar la operación con E-03.
-- Si la descripción llega con un valor que no es texto ni nulo, entonces el sistema deberá convertirla a texto antes de validarla. [NECESITA ACLARACIÓN: ver duda N2]
+- Cuando la usuaria cree una actividad con la descripción nula, el sistema deberá guardar la actividad sin descripción.
+- Si la descripción llega con un valor que no es texto ni nulo, entonces el sistema deberá convertirla a su representación JSON en texto antes de validarla.
 
 ### RF-3 — Consultar una actividad
 - Cuando la usuaria consulte una actividad por su identificador, el sistema deberá devolver su detalle: identificador, nombre, descripción (nula si no tiene), fecha y hora de creación, si está hecha hoy, racha actual, total de días hechos, fecha del último día hecho (nula si nunca se marcó) e historial completo de fechas en orden ascendente.
@@ -78,7 +82,12 @@ Los textos son literales y se comprueban tal cual.
 - Si el último día hecho es anterior a ayer o el historial está vacío, entonces el sistema deberá informar una racha de 0.
 
 ### RF-9 — Precedencia de errores
-- El sistema deberá informar un único error por operación, con esta precedencia: 1) E-07; 2) errores de formato (E-01 a E-04); 3) errores de conflicto (E-05, E-06). [NECESITA ACLARACIÓN: orden entre campos dentro del paso 2, ver duda N3]
+- El sistema deberá informar un único error por operación, con esta precedencia: 1) E-11; 2) E-10; 3) E-07; 4) errores de formato, por este orden de campos: campos no modificables (identificador, fecha de creación, historial; E-04 nombra el primero presente), nombre (E-01, E-02) y descripción (E-03); 5) errores de conflicto (E-05, E-06).
+
+### RF-11 — Peticiones mal formadas
+- Si el cuerpo de una petición no es un JSON válido o no es un objeto, entonces el sistema deberá rechazarla con E-10.
+- Cuando una petición llegue con el cuerpo vacío, el sistema deberá tratarlo como un objeto vacío.
+- Si la petición no corresponde a ninguna operación de la API (ruta o método inexistente), entonces el sistema deberá responder con E-11.
 
 ### RF-10 — Datos guardados
 - Mientras no existan datos guardados, el sistema deberá comportarse como si no hubiera ninguna actividad.
@@ -115,6 +124,10 @@ Los textos son literales y se comprueban tal cual.
 - Si se borra una actividad y se crea otra con el mismo nombre, la nueva empieza con el historial vacío y otro identificador.
 - Sin datos guardados (primera ejecución), el listado devuelve una lista vacía.
 - Datos guardados con una fecha futura o repetida en un historial dan E-08 en cualquier operación.
+- Un nombre enviado como número 123 se guarda como «123»; un nombre nulo da E-01.
+- Una edición con historial y nombre vacío da E-04, no E-01.
+- Un cuerpo que no es JSON válido, o que es una lista, da E-10.
+- Una ruta inexistente, o un método no admitido en una ruta existente, da E-11.
 
 ## 7. Fuera de alcance
 - Pasos dentro de una actividad (llegarán en una spec posterior).
@@ -128,12 +141,11 @@ Los textos son literales y se comprueban tal cual.
 - Recordatorios, notificaciones y estadísticas más allá de la racha y el total.
 
 ## 8. Criterios de finalización
-- Cada criterio de aceptación de RF-1 a RF-10 tiene al menos un test automático que lo cubre, y todos pasan.
+- Cada criterio de aceptación de RF-1 a RF-11 tiene al menos un test automático que lo cubre, y todos pasan.
 - Los casos límite de la sección 6 están cubiertos por tests.
 - Los tests no usan la fecha real ni los datos reales de la usuaria (RNF-6).
 - Cada error del catálogo se comprueba en algún test por su tipo y su texto literal.
 - No quedan elementos [NECESITA ACLARACIÓN]. Uno solo puede quedar pendiente si la persona responsable lo aprueba y su aprobación queda registrada en la sección 9 con la fecha y la decisión.
 
 ## 9. Dudas abiertas
-- [NECESITA ACLARACIÓN] **N2**: no se define cómo se convierten a texto los valores no textuales (números, decimales, booleanos, listas, objetos), ni qué pasa si el nombre llega nulo.
-- [NECESITA ACLARACIÓN] **N3**: no se define el orden entre campos dentro de los errores de formato (nombre, descripción, campos no modificables) cuando hay varios a la vez.
+Ninguna. N1, N2 y N3 están resueltas en las definiciones, en RF-1, RF-2 y en RF-9.
