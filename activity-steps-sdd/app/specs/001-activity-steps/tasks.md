@@ -8,17 +8,17 @@ Fuente: `spec.md` (RF-1 a RF-11) y `plan.md`. Normas para cada tarea (constituci
 
 ## Fase 0 — Base
 
-- [ ] **T01 — Test de arquitectura hexagonal** · Principio 3 · Dep.: —
+- [x] **T01 — Test de arquitectura hexagonal** · Principio 3 · Dep.: —
   - Crear `tests/activities/infrastructure/__init__.py` y `tests/activities/test_architecture.py`, que recorre con `ast` los imports de `src/activities/domain/` y `src/activities/application/`.
   - Hecho cuando: el test pasa con el árbol actual y falla si se añade temporalmente `import src.activities.infrastructure` en un módulo de `domain/` (comprobado a mano y revertido).
 
 ## Fase 1 — Dominio
 
-- [ ] **T02 — Catálogo de errores** · RF-9, RNF-2, RNF-4 · Dep.: T01
+- [x] **T02 — Catálogo de errores** · RF-9, RNF-2, RNF-4 · Dep.: T01
   - `domain/errors.py`: excepción base con `code`, `type` y `message`, y las 11 entradas E-01 a E-11. E-04 recibe el nombre del campo.
   - Hecho cuando: un test parametrizado comprueba, para cada código, el `type` (`validation`, `not_found`, `conflict`, `storage`) y el texto literal de la spec, incluido E-04 con `{campo}` sustituido.
 
-- [ ] **T03 — Recorte y conteo de caracteres** · RF-1, RF-2 · Dep.: T01
+- [x] **T03 — Recorte y conteo de caracteres** · RF-1, RF-2 · Dep.: T01
   - `domain/text_rules.py`: `clean(s)` y `char_count(s)` (NFC + `len`).
   - Hecho cuando: hay tests en verde para «  a  » → «a», «e» + U+0301 → 1 carácter y 👨‍👩‍👧 → 5 caracteres.
 
